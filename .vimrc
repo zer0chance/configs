@@ -3,9 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
 Plug 'ycm-core/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
 
 "colorscheems
 Plug 'morhetz/gruvbox'
@@ -14,7 +13,6 @@ Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 "colorscheme gruvbox
-"colorscheme OceanicNext 
 colorscheme iceberg 
 set background=dark
 syntax on
@@ -29,6 +27,7 @@ set softtabstop=4
 set number
 set hlsearch
 set incsearch
+
 
 "mappings
 map <C-b> :NERDTreeToggle<CR>
