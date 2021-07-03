@@ -119,18 +119,28 @@ fi
 
 PS1='\[\e[1;33m\]\u\[\e[1;35m\]@\[\033[1;32m\]\h \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
-# git aliases
+# git
 alias ga='git add'
+alias gaa='git add --all'
+alias gm='git commit'
+alias gmm='git commit --amend'
+alias gmmn='git commit --amend --no-edit'
 alias gb='git branch'
 alias gc='git checkout'
+alias gcm='git checkout master'
 alias gd='git diff'
-alias gl='git log --graph --decorate --all'
-alias gm='git commit'
+alias gdh='git diff HEAD^ HEAD'
 alias gp='git pull'
+alias gs='git status'
 alias gruo='git remote update origin'
 alias grom='git rebase origin/master'
-alias gs='git status'
+alias gcf='git clean -f .'
+alias gsh='git stash'
+alias grh='git reset HEAD'
+alias gl='git log --graph --decorate --all'
+alias glm='git log --first-parent master --oneline --decorate'
 alias gh='git log --oneline --graph --decorate --all'
+export GIT_EDITOR="vim"
 
 # apt
 alias Update='sudo apt-get update'
