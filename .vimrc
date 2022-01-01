@@ -3,25 +3,27 @@ syntax enable
 syntax on
 filetype plugin on
 
+" au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
-
 "Plug 'ycm-core/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-commentary'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 
 "colorscheems
 Plug 'morhetz/gruvbox'
-"Plug 'cocopon/iceberg.vim'
 
 call plug#end()
 
@@ -31,9 +33,25 @@ set background=dark
 "let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+set updatetime=100
+
+"set autochdir
+set tags=./tags,tags;
+let g:tagbar_ctags_bin='/home/eignatenko/bin/ctags'
+
+function! CreateTags()
+    let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
+    exec ':!ctags -R -f ' . curNodePath . '/tags ' . curNodePath
+endfunction
+nmap <silent> <F4> :call CreateTags()<CR>
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 set number
 set backspace=indent,eol,start
@@ -44,6 +62,7 @@ set incsearch
 "mappings
 nnoremap <F5> :set hlsearch!<CR>
 nmap <F6> :NERDTreeToggle<CR>
+nmap <F7> :TagbarToggle<CR>
 
 map <silent> <C-h> :call WinMove('h')<CR>
 map <silent> <C-j> :call WinMove('j')<CR>
